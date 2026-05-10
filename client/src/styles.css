@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply min-w-0;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-950 antialiased dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  body,
+  #root {
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  * {
+    min-width: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 transparent;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-w-0 items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-center font-bold text-white shadow-sm transition duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply inline-flex min-w-0 items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-center font-bold text-slate-800 transition duration-200 hover:-translate-y-0.5 hover:border-sky-200 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-sky-900 dark:hover:bg-slate-800;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100 dark:border-slate-700 dark:bg-slate-900 dark:focus:ring-sky-950;
+  }
+  .panel {
+    @apply rounded-lg border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+  }
+  .glass {
+    @apply border border-white/20 bg-white/75 shadow-soft backdrop-blur-xl dark:border-slate-800/70 dark:bg-slate-900/75;
+  }
+  .premium-band {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(14, 165, 233, 0.20), transparent 24%),
+      radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.16), transparent 26%),
+      linear-gradient(135deg, #f8fafc 0%, #eef6ff 48%, #ffffff 100%);
+  }
+  .dark .premium-band {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(14, 165, 233, 0.20), transparent 24%),
+      radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.12), transparent 26%),
+      linear-gradient(135deg, #020617 0%, #0f172a 55%, #111827 100%);
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-primary,
+  .btn-secondary {
+    gap: 0.375rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    white-space: normal;
+  }
+
+  .input {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+}
+
+@media (max-width: 240px) {
+  .btn-primary,
+  .btn-secondary {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.8125rem;
+  }
+}
