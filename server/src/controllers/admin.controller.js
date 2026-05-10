@@ -13,12 +13,6 @@ const bookingPopulate = [
   { path: 'vendor', select: 'name businessName phone email' }
 ];
 
-const notify = (task) => {
-  task().catch((error) => {
-    console.error(`Email notification failed: ${error.message}`);
-  });
-};
-
 export const adminOverview = asyncHandler(async (_req, res) => {
   const [users, vendors, bookings, services] = await Promise.all([
     User.countDocuments({ role: 'customer' }),
@@ -66,7 +60,7 @@ export const assignVendor = asyncHandler(async (req, res) => {
   if (!booking) {
     fail('Booking not found', 404);
   }
-  notify(() => sendBookingAssignedMail({ booking }));
+  await sendBookingAssignedMail({ booking });
   res.json(booking);
 });
 
@@ -83,6 +77,6 @@ export const updateBookingStatus = asyncHandler(async (req, res) => {
   if (!booking) {
     fail('Booking not found', 404);
   }
-  notify(() => sendBookingStatusMail({ booking }));
+  await sendBookingStatusMail({ booking });
   res.json(booking);
 });

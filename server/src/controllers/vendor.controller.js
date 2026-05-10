@@ -10,12 +10,6 @@ const vendorPopulate = [
   { path: 'vendor', select: 'name businessName phone email' }
 ];
 
-const notify = (task) => {
-  task().catch((error) => {
-    console.error(`Email notification failed: ${error.message}`);
-  });
-};
-
 export const assignedBookings = asyncHandler(async (req, res) => {
   res.json(await Booking.find({ vendor: req.user._id }).populate(vendorPopulate).lean().sort({ createdAt: -1 }));
 });
@@ -37,7 +31,7 @@ export const updateAssignedBooking = asyncHandler(async (req, res) => {
   if (!booking) {
     fail('Booking not found', 404);
   }
-  notify(() => sendBookingStatusMail({ booking }));
+  await sendBookingStatusMail({ booking });
   res.json(booking);
 });
 

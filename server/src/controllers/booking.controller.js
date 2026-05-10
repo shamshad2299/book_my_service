@@ -11,12 +11,6 @@ const populate = [
   { path: 'customer', select: 'name email phone' }
 ];
 
-const notify = (task) => {
-  task().catch((error) => {
-    console.error(`Email notification failed: ${error.message}`);
-  });
-};
-
 export const createBooking = asyncHandler(async (req, res) => {
   requireFields(req.body, ['serviceId', 'scheduledAt', 'address']);
   requireObjectId(req.body.serviceId, 'serviceId');
@@ -47,7 +41,7 @@ export const createBooking = asyncHandler(async (req, res) => {
     amount: service.price
   });
   const populatedBooking = await booking.populate(populate);
-  notify(() => sendBookingCreatedMail({ booking: populatedBooking }));
+  await sendBookingCreatedMail({ booking: populatedBooking });
   res.status(201).json(populatedBooking);
 });
 

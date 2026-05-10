@@ -14,7 +14,7 @@ BookMyService is a comprehensive full-stack service booking platform designed to
 - **Dynamic Dashboards**: Tailored experiences for each user role to manage their specific tasks efficiently.
 - **Service Management**: Vendors can easily add, edit, and remove services.
 - **Booking System**: Real-time booking flow with status tracking (Pending, Confirmed, Completed, Cancelled).
-- **Email Notifications**: Automated email alerts for OTPs and booking updates using Nodemailer.
+- **Email Notifications**: Automated email alerts for OTPs and booking updates using Brevo (formerly Sendinblue).
 - **Responsive Design**: Fully responsive UI built with Tailwind CSS, ensuring a seamless experience across devices.
 
 ##  Tech Stack
@@ -31,7 +31,7 @@ BookMyService is a comprehensive full-stack service booking platform designed to
 - Node.js & Express.js
 - MongoDB & Mongoose
 - JSON Web Token (JWT)
-- Nodemailer (Email service)
+- Brevo Transactional Email API (Email service)
 - Bcryptjs (Password hashing)
 
 ##  Installation & Setup

@@ -9,6 +9,7 @@ import authRoutes from './routes/auth.routes.js';
 import bookingRoutes from './routes/booking.routes.js';
 import serviceRoutes from './routes/service.routes.js';
 import vendorRoutes from './routes/vendor.routes.js';
+import testRoutes from './routes/test.routes.js';
 
 export const app = express();
 
@@ -39,6 +40,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/vendor', vendorRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api', testRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
