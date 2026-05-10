@@ -1,0 +1,13 @@
+[build]
+  # The directory where Netlify will run the build command
+  base = "client"
+  # The command to run to build your site
+  command = "npm run build"
+  # The directory that Netlify will serve (relative to the base directory)
+  publish = "dist"
+
+# Standard SPA redirect rule to handle React Router routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
